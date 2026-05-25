@@ -38,7 +38,7 @@ public class SecurityConfig {
             }))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/", "/auth/**").permitAll()
                 .requestMatchers("/api/patients/me").hasAnyAuthority("ROLE_PATIENT", "ROLE_ADMIN", "ROLE_STAFF")
                 .requestMatchers("/api/patients/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_STAFF")
                 .requestMatchers(HttpMethod.GET, "/api/doctors").hasAnyAuthority("ROLE_PATIENT", "ROLE_ADMIN", "ROLE_STAFF")
